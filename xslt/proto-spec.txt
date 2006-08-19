@@ -1,0 +1,65 @@
+XML Grammar for Products Syndication:
+-------------------------------------
+
+Examples:
+
+    - http://www.shlomifish.org/philosophy/books-recommends/
+
+    - http://www.joelonsoftware.com/navLinks/fog0000000262.html
+
+* Each item record will have the id attribute that will uniquely identify it. 
+
+* Sub-element of the item: <isbn></isbn>
+
+* Sub-element of the item: <title></title>
+
+* Descriptions: <desc></desc> with a sub-set of HTML inside.
+
+* Authors, Artists: <creator type="(author|artist|...)">
+    - Multiple ?
+
+* Over-riding URL in the stores:
+    <ref href="http://amazon.com/FILL_IN" affil="amazon" />
+
+Categorisation:
+---------------
+
+    * A simple tree with the items as leaves
+        - 
+        <cat id="books">
+            <title>Books</title>
+            <desc>
+            <p>
+            These are my books.
+            </p>
+            </desc>
+            <subs>
+                <cat id="fiction_books">
+                <title>Fiction</title>
+                <desc>
+                <p>
+                Books of fiction.
+                </p>
+                </desc>
+                <subs>
+                    <prod xref="#treasure_island">
+                    # Overrides stuff here.
+                    </prod>
+                    <prod xref="#little_women" />
+                    <cat id="jules_verne_books">
+                        <title>Books by Jules Verne</title>
+                        <desc>
+                        <p>
+                        Jules Verne was a very prolific writer of Science
+                        Fiction and Popular Science Fiction.
+                        </desc>
+                        <prod id="20000_leagues">
+                        <title>20,000 Leagues under the sea.</title>
+                        </prod>
+                    </cat>
+                </subs>
+                </cat>
+            </subs>
+        </cat>
+
+
