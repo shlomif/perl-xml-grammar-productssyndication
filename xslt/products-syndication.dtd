@@ -1,0 +1,8 @@
+<!ELEMENT product-syndication (meta?,data)>
+<!ELEMENT meta (#PCDATA)>
+<!ELEMENT data (cat)>
+<!ELEMENT cat (title,desc?)>
+<!ELEMENT desc (p*)>
+<!ELEMENT p (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ATTLIST cat id ID #REQUIRED>
