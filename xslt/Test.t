@@ -3,12 +3,13 @@
 use strict;
 use warnings;
 
-use Test::More tests => 1;
+use Test::More tests => 2;
 use IO::All;
 
 use XML::LibXML;
 
-# TEST*1
+# TEST:$num_files=2
+# TEST*$num_files
 foreach my $xml_file (io("./valid-xmls")->all())
 {
     if ($xml_file =~ /\.xml$/)
