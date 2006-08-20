@@ -2,12 +2,14 @@
 <!ELEMENT meta (#PCDATA)>
 <!ELEMENT data (cat)>
 <!ELEMENT cat (title,desc?,(cat|prod)*)>
-<!ELEMENT prod (title,isbn,creator*,desc?)>
+<!ELEMENT prod (title,isbn,creator*,ref*,desc?)>
 <!ELEMENT desc (p*)>
 <!ELEMENT p (#PCDATA)>
 <!ELEMENT isbn (#PCDATA)>
 <!ELEMENT title (#PCDATA)>
 <!ELEMENT creator (#PCDATA)>
+<!ELEMENT ref EMPTY>
 <!ATTLIST cat id ID #REQUIRED>
 <!ATTLIST prod id ID #REQUIRED>
 <!ATTLIST creator type (author|artist|performer|composer) "author">
+<!ATTLIST ref href CDATA "" affil CDATA "">

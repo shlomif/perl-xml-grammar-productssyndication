@@ -3,12 +3,12 @@
 use strict;
 use warnings;
 
-use Test::More tests => 4;
+use Test::More tests => 5;
 use IO::All;
 
 use XML::LibXML;
 
-# TEST:$num_files=4
+# TEST:$num_files=5
 # TEST*$num_files
 foreach my $xml_file (io("./valid-xmls")->all())
 {
