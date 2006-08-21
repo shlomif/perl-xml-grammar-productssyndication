@@ -9,7 +9,7 @@
      This DTD module is identified by the PUBLIC and SYSTEM identifiers:
 
        PUBLIC "-//W3C//ENTITIES XHTML Datatypes 1.0//EN"
-       SYSTEM "xhtml-datatypes-1.mod"
+       SYSTEM "http://www.w3.org/TR/xhtml-modularization/DTD/xhtml-datatypes-1.mod"
 
      Revisions:
      (none)

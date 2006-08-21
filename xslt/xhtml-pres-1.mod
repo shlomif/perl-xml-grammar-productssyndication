@@ -9,7 +9,7 @@
      This DTD module is identified by the PUBLIC and SYSTEM identifiers:
 
        PUBLIC "-//W3C//ELEMENTS XHTML Presentation 1.0//EN"
-       SYSTEM "xhtml-pres-1.mod"
+       SYSTEM "http://www.w3.org/TR/xhtml-modularization/DTD/xhtml-pres-1.mod"
 
      Revisions:
      (none)

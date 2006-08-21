@@ -9,7 +9,7 @@
      This DTD module is identified by the PUBLIC and SYSTEM identifiers:
 
        PUBLIC "-//W3C//ELEMENTS XHTML Legacy Redeclarations 1.0//EN"
-       SYSTEM "xhtml-legacy-redecl-1.mod"
+       SYSTEM "http://www.w3.org/TR/xhtml-modularization/DTD/xhtml-legacy-redecl-1.mod"
 
      Revisions:
      (none)
