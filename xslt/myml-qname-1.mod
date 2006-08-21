@@ -4,7 +4,7 @@
      xmlns attributes. -->
 <!ENTITY % MyML-datatypes.mod
          PUBLIC "-//W3C//ENTITIES XHTML Datatypes 1.0//EN"
-		 "http://www.w3.org/TR/xhtml-modularization/DTD/xhtml-datatypes-1.mod" >
+		 "xhtml-datatypes-1.mod" >
 %MyML-datatypes.mod;
 
 <!-- By default, disable prefixing of this module -->

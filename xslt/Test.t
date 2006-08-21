@@ -3,12 +3,12 @@
 use strict;
 use warnings;
 
-use Test::More tests => 5;
+use Test::More tests => 6;
 use IO::All;
 
 use XML::LibXML;
 
-# TEST:$num_files=5
+# TEST:$num_files=6
 # TEST*$num_files
 my $dtd =
     XML::LibXML::Dtd->parse_string(

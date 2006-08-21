@@ -32,43 +32,44 @@ driver -->
 <!-- Bring in the XHTML Framework -->
 <!ENTITY % xhtml-legacy-redecl.mod
      PUBLIC "-//W3C//ELEMENTS XHTML Legacy Redeclarations 1.0//EN"
-            "http://www.w3.org/TR/xhtml-modularization/DTD/xhtml-legacy-redecl-1.mod">
+            "xhtml-legacy-redecl-1.mod">
 %xhtml-legacy-redecl.mod;
 
 <!-- Basic Text Module (Required)  ............................... -->
 <!ENTITY % xhtml-text.mod
      PUBLIC "-//W3C//ELEMENTS XHTML Basic Text 1.0//EN"
-            "http://www.w3.org/TR/xhtml-modularization/DTD/xhtml-text-1.mod" >
+            "xhtml-text-1.mod" >
 %xhtml-text.mod;
 
 <!-- Hypertext Module (required) ................................. -->
 <!ENTITY % xhtml-hypertext.mod
      PUBLIC "-//W3C//ELEMENTS XHTML Hypertext 1.0//EN"
-            "http://www.w3.org/TR/xhtml-modularization/DTD/xhtml-hypertext-1.mod" >
+            "xhtml-hypertext-1.mod" >
 %xhtml-hypertext.mod;
 
 <!-- Lists Module (required)  .................................... -->
 <!ENTITY % xhtml-list.mod
      PUBLIC "-//W3C//ELEMENTS XHTML Lists 1.0//EN"
-            "http://www.w3.org/TR/xhtml-modularization/DTD/xhtml-list-1.mod" >
+            "xhtml-list-1.mod" >
 %xhtml-list.mod;
 
 <!-- My Elements Module   ........................................ -->
 <!ENTITY % MyML-elements.mod
-     SYSTEM "myml-elements-1.mod" >
+    PUBLIC  "-//W3C//MyML Elements//EN"
+     "myml-elements-1.mod" >
 %MyML-elements.mod;
 
 <!-- XHTML Images module  ........................................ -->
 <!ENTITY % xhtml-image.mod
      PUBLIC "-//W3C//ELEMENTS XHTML Images 1.0//EN"
-            "http://www.w3.org/TR/xhtml-modularization/DTD/xhtml-image-1.mod" >
+            "xhtml-image-1.mod" >
 %xhtml-image.mod;
 
 <!-- XHTML Images module  ........................................ -->
-<!ENTITY % xhtml-presentation.mod
+<!ENTITY % xhtml-pres.mod
      PUBLIC "-//W3C//ELEMENTS XHTML Images 1.0//EN"
-            "http://www.w3.org/TR/xhtml-modularization/DTD/xhtml-presentation-1.mod" >
-%xhtml-presentation.mod;
+            "xhtml-pres-1.mod" >
+%xhtml-pres.mod;
 
 <!ELEMENT product-syndication (meta?,data)>
 <!ELEMENT meta (#PCDATA)>

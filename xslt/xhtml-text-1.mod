@@ -39,7 +39,7 @@
 <![%xhtml-blkstruct.module;[
 <!ENTITY % xhtml-blkstruct.mod
      PUBLIC "-//W3C//ELEMENTS XHTML Block Structural 1.0//EN"
-            "xhtml11-blkstruct-1.mod" >
+            "xhtml-blkstruct-1.mod" >
 %xhtml-blkstruct.mod;]]>
 
 <!ENTITY % xhtml-blkphras.module "INCLUDE" >
