@@ -9,7 +9,7 @@
      This DTD module is identified by the PUBLIC and SYSTEM identifiers:
 
        PUBLIC "-//W3C//ENTITIES XHTML Qualified Names 1.0//EN"
-       SYSTEM "http://www.w3.org/TR/xhtml-modularization/DTD/xhtml-qname-1.mod"
+       SYSTEM "xhtml-qname-1.mod"
 
      Revisions:
 #2000-10-22: added qname declarations for ruby elements

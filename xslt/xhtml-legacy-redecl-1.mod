@@ -9,7 +9,7 @@
      This DTD module is identified by the PUBLIC and SYSTEM identifiers:
 
        PUBLIC "-//W3C//ELEMENTS XHTML Legacy Redeclarations 1.0//EN"
-       SYSTEM "http://www.w3.org/TR/xhtml-modularization/DTD/xhtml-legacy-redecl-1.mod"
+       SYSTEM "xhtml-legacy-redecl-1.mod"
 
      Revisions:
      (none)
@@ -41,31 +41,27 @@
 <!ENTITY % xhtml-arch.module "IGNORE" >
 <![%xhtml-arch.module;[
 <!ENTITY % xhtml-arch.mod
-     PUBLIC "-//W3C//ELEMENTS XHTML Base Architecture 1.0//EN"
-            "xhtml-arch-1.mod" >
+     SYSTEM "xhtml-arch-1.mod" >
 %xhtml-arch.mod;]]>
 
 <!ENTITY % xhtml-notations.module "INCLUDE" >
 <![%xhtml-notations.module;[
 <!ENTITY % xhtml-notations.mod
-     PUBLIC "-//W3C//NOTATIONS XHTML Notations 1.0//EN"
-            "xhtml-notations-1.mod" >
+     SYSTEM "xhtml-notations-1.mod" >
 %xhtml-notations.mod;]]>
 
 <!-- Datatypes Module ............................................ -->
 <!ENTITY % xhtml-datatypes.module "INCLUDE" >
 <![%xhtml-datatypes.module;[
 <!ENTITY % xhtml-datatypes.mod
-     PUBLIC "-//W3C//ENTITIES XHTML Datatypes 1.0//EN"
-            "xhtml-datatypes-1.mod" >
+     SYSTEM "xhtml-datatypes-1.mod" >
 %xhtml-datatypes.mod;]]>
 
 <!-- Qualified Names Module ...................................... -->
 <!ENTITY % xhtml-qname.module "INCLUDE" >
 <![%xhtml-qname.module;[
 <!ENTITY % xhtml-qname.mod
-     PUBLIC "-//W3C//ENTITIES XHTML Qualified Names 1.0//EN"
-            "xhtml-qname-1.mod" >
+   SYSTEM "xhtml-qname-1.mod" >
 %xhtml-qname.mod;]]>
 
 <!-- Additional Qualified Names .................................. -->
@@ -92,8 +88,7 @@
 <!ENTITY % xhtml-events.module "IGNORE" >
 <![%xhtml-events.module;[
 <!ENTITY % xhtml-events.mod
-     PUBLIC "-//W3C//ENTITIES XHTML Intrinsic Events 1.0//EN"
-            "xhtml-events-1.mod" >
+     SYSTEM "xhtml-events-1.mod" >
 %xhtml-events.mod;]]>
 
 <!-- Additional Common Attributes ................................ -->
@@ -110,8 +105,7 @@
 <!ENTITY % xhtml-attribs.module "INCLUDE" >
 <![%xhtml-attribs.module;[
 <!ENTITY % xhtml-attribs.mod
-     PUBLIC "-//W3C//ENTITIES XHTML Common Attributes 1.0//EN"
-            "xhtml-attribs-1.mod" >
+     SYSTEM "xhtml-attribs-1.mod" >
 %xhtml-attribs.mod;]]>
 
 <!-- placeholder for content model redeclarations -->
@@ -178,8 +172,7 @@
 <!ENTITY % xhtml-charent.module "INCLUDE" >
 <![%xhtml-charent.module;[
 <!ENTITY % xhtml-charent.mod
-     PUBLIC "-//W3C//ENTITIES XHTML Character Entities 1.0//EN"
-            "xhtml-charent-1.mod" >
+     SYSTEM "xhtml-charent-1.mod" >
 %xhtml-charent.mod;]]>
 
 <!-- end of xhtml-legacy-redecl-1.mod -->

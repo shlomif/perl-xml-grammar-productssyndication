@@ -3,8 +3,7 @@
 <!-- Bring in the datatypes - we use the URI.datatype PE for declaring the
      xmlns attributes. -->
 <!ENTITY % MyML-datatypes.mod
-         PUBLIC "-//W3C//ENTITIES XHTML Datatypes 1.0//EN"
-		 "xhtml-datatypes-1.mod" >
+         SYSTEM "xhtml-datatypes-1.mod" >
 %MyML-datatypes.mod;
 
 <!-- By default, disable prefixing of this module -->

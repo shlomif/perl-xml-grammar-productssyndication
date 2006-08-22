@@ -26,9 +26,6 @@
       | %samp.qname; | %kbd.qname; | %var.qname; | %cite.qname; 
       | %abbr.qname; | %acronym.qname; | %q.qname;" >
 
-<!ENTITY % InlPres.class
-     "" >
-
 <!ENTITY % Anchor.class "| %a.qname;" >
 
 <!ENTITY % InlSpecial.class "| %img.qname; " >
