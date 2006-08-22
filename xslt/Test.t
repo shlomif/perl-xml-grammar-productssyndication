@@ -11,8 +11,9 @@ use XML::LibXML;
 # TEST:$num_files=6
 # TEST*$num_files
 my $dtd =
-    XML::LibXML::Dtd->parse_string(
-                scalar(io("products-syndication.dtd")->slurp())
+    XML::LibXML::Dtd->new(
+            "Products Syndication Markup Language 0.1.1",
+            "products-syndication.dtd",
             );
 
 foreach my $xml_file (io("./valid-xmls")->all())
