@@ -8,7 +8,7 @@ use IO::All;
 
 use XML::LibXML;
 
-# TEST:$num_files=7
+# TEST:$num_files=8
 # TEST*$num_files
 my $dtd =
     XML::LibXML::Dtd->new(
