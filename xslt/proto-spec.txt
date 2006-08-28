@@ -21,6 +21,9 @@ Examples:
 * Over-riding URL in the stores:
     <ref href="http://amazon.com/FILL_IN" affil="amazon" />
 
+* A <set>...</set> element for a sets of items to be collected together
+(like Indiana Jones 1, 2, 3, Beatles Red & Blue, etc.)
+
 Categorisation:
 ---------------
 
