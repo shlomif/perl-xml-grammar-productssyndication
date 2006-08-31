@@ -69,7 +69,7 @@ driver -->
 <!ELEMENT data (cat)>
 <!ELEMENT cat (title,desc?,(cat|prod)*)>
 <!ELEMENT prod (title,isbn,creator*,ref*,desc?)>
-<!ELEMENT desc ((#PCDATA | %Flow.mix;)*)>
+<!ELEMENT desc ((%Flow.mix;)*)>
 <!ELEMENT isbn (#PCDATA)>
 <!ELEMENT title (#PCDATA)>
 <!ELEMENT creator (#PCDATA)>
