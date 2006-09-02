@@ -67,8 +67,9 @@ driver -->
 <!ELEMENT product-syndication (meta?,data)>
 <!ELEMENT meta (#PCDATA)>
 <!ELEMENT data (cat)>
-<!ELEMENT cat (title,desc?,(cat|prod)*)>
+<!ELEMENT cat (title,desc?,(cat|prod|set)*)>
 <!ELEMENT prod (title,isbn,creator*,ref*,desc?)>
+<!ELEMENT set (title,prod*,desc?)>
 <!ELEMENT desc ((%Flow.mix;)*)>
 <!ELEMENT isbn (#PCDATA)>
 <!ELEMENT title (#PCDATA)>
@@ -78,3 +79,4 @@ driver -->
 <!ATTLIST prod id ID #REQUIRED>
 <!ATTLIST creator type (author|artist|performer|composer) "author">
 <!ATTLIST ref href CDATA "" affil CDATA "">
+<!ATTLIST set id ID #REQUIRED>

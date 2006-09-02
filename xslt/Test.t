@@ -3,12 +3,12 @@
 use strict;
 use warnings;
 
-use Test::More tests => 8;
+use Test::More tests => 9;
 use IO::All;
 
 use XML::LibXML;
 
-# TEST:$num_files=8
+# TEST:$num_files=9
 # TEST*$num_files
 my $dtd =
     XML::LibXML::Dtd->new(
