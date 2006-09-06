@@ -3,27 +3,13 @@
 use strict;
 use warnings;
 
-use Test::More tests => 10;
+use Test::XML tests => 1;
 use IO::All;
 
 use XML::LibXML;
-
-# TEST:$num_files=9
-# TEST*$num_files
-my $dtd =
-    XML::LibXML::Dtd->new(
-            "Products Syndication Markup Language 0.1.1",
-            "products-syndication.dtd",
-            );
+use XML::LibXSLT;
 
 my @xml_files = (grep { /\.xml$/ } io("./valid-xmls")->all());
-foreach my $xml_file (@xml_files)
-{
-    my $p = XML::LibXML->new();
-    $p->validation(0);
-    my $dom = $p->parse_file($xml_file);
-    ok ($dom->validate($dtd));
-}
 
 # TEST:$num_xslt=1
 # TEST*$num_xslt
@@ -39,7 +25,7 @@ foreach my $xml_file (@xml_files[0 .. 0])
     my $results = $stylesheet->transform($source);
 
     my $expected = io()->file(get_expected_fn($xml_file))->slurp();
-    my $got = $stylesheet->output($results);
+    my $got = $stylesheet->output_string($results);
     is_xml(
         $got,
         $expected,
@@ -50,7 +36,7 @@ foreach my $xml_file (@xml_files[0 .. 0])
 sub get_expected_fn
 {
     my $file = shift;
-    if ($file =~ m{^./valid-xmls/(.*)\.xml$})
+    if ($file =~ m{^(?:\./)?valid-xmls/(.*)\.xml$})
     {
         return "./outputs/$1.html";
     }
