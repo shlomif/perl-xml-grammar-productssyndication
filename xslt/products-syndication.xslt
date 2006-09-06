@@ -13,16 +13,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
-    <h2>
-        <xsl:attribute name="id">
-            <xsl:value-of select="//product-syndication/data/cat/@id" />
-        </xsl:attribute>
-        <xsl:value-of select="//product-syndication/data/cat/title" />
-    </h2>
-    <xsl:apply-templates mode="copy-no-ns" 
-        select="//product-syndication/data/cat/desc/*" />
+    <xsl:apply-templates select="//product-syndication/data/cat" />
 </body>
 </html>
+</xsl:template>
+
+<xsl:template match="cat">
+    <xsl:element name="h{count(ancestor-or-self::cat)+1}">
+        <xsl:attribute name="id">
+            <xsl:value-of select="@id" />
+        </xsl:attribute>
+        <xsl:value-of select="title" />
+    </xsl:element>
+    <xsl:apply-templates mode="copy-no-ns" 
+        select="desc/*" />
+    <xsl:apply-templates select="cat" />
 </xsl:template>
 
 <xsl:template mode="copy-no-ns" match="*">
