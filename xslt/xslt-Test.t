@@ -3,17 +3,22 @@
 use strict;
 use warnings;
 
-use Test::XML tests => 2;
+use Test::XML tests => 3;
 use IO::All;
 
 use XML::LibXML;
 use XML::LibXSLT;
 
-my @xml_files = (grep { /\.xml$/ } io("./valid-xmls")->all());
+sub get_files_list
+{
+    return (grep { /\.xml$/ } io("./valid-xmls")->all());
+}
 
-# TEST:$num_xslt=2
+my @xml_files = get_files_list();
+
+# TEST:$num_xslt=3
 # TEST*$num_xslt
-foreach my $xml_file (@xml_files[0 .. 1])
+foreach my $xml_file (@xml_files[0 .. 2])
 {
     my $parser = XML::LibXML->new();
     my $xslt = XML::LibXSLT->new();

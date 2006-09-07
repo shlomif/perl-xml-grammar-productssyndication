@@ -1,5 +1,6 @@
 <xsl:stylesheet version = '1.0'
-     xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
+     xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+     xmlns="http://www.w3.org/1999/xhtml">
 
 <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"
  doctype-public="-//W3C//DTD XHTML 1.1//EN"
@@ -27,9 +28,49 @@
     </xsl:element>
     <xsl:apply-templates mode="copy-no-ns" 
         select="desc/*" />
+    <xsl:apply-templates select="prod" />
     <xsl:apply-templates select="cat" />
 </xsl:template>
 
+<xsl:template match="prod">
+    <div class="prod">
+        <div class="head">
+            <p class="prod_img">
+                <xsl:element name="a">
+                    <xsl:attribute name="href">
+                        <xsl:text>http://www.amazon.com/exec/obidos/ASIN/</xsl:text>
+                        <xsl:value-of select="isbn" />
+                        <xsl:text>/ref=nosim/shlomifishhom-20/</xsl:text>
+                    </xsl:attribute>
+                    <xsl:element name="img">
+                        <xsl:attribute name="alt">
+                            <xsl:text>Preview</xsl:text>
+                        </xsl:attribute>
+                        <xsl:attribute name="src">
+                            <xsl:text>images/</xsl:text>
+                            <xsl:value-of select="@id" />
+                            <xsl:text>.jpg</xsl:text>
+                        </xsl:attribute>
+                    </xsl:element>
+                </xsl:element>
+            </p>
+            <p class="prod_title">
+                <xsl:element name="a">
+                    <xsl:attribute name="href">
+                        <xsl:text>http://www.amazon.com/exec/obidos/ASIN/</xsl:text>
+                        <xsl:value-of select="isbn" />
+                        <xsl:text>/ref=nosim/shlomifishhom-20/</xsl:text>
+                    </xsl:attribute>
+                    <xsl:value-of select="title" />
+                </xsl:element>                    
+            </p>
+        </div>
+        <div class="desc">
+            <xsl:apply-templates mode="copy-no-ns"
+                select="desc/*" />
+        </div>
+    </div>
+</xsl:template>
 <xsl:template mode="copy-no-ns" match="*">
     <xsl:element name="{local-name()}">
         <xsl:copy-of select="@*"/>
