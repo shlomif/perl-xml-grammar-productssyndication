@@ -31,6 +31,7 @@ my $builder = Module::Build->new(
         'Test::XML' => 0,
         'XML::LibXML' => 0,
         'XML::LibXSLT' => 0,
+        'Moose' => 0,
     },
     add_to_cleanup      => [ 'XML::Grammar::ProductsSyndication-*' ],
     create_makefile_pl => 'passthrough',

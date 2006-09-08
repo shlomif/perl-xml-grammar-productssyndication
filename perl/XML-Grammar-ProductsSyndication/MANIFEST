@@ -52,5 +52,15 @@ META.yml # Will be created by "make dist"
 README
 t/00-load.t
 t/boilerplate.t
+t/data/valid-xmls/001-empty-cat.xml
+t/data/valid-xmls/002-nested-cat.xml
+t/data/valid-xmls/0030-with-one-product.xml
+t/data/valid-xmls/0031-with-products.xml
+t/data/valid-xmls/004-products-with-creators.xml
+t/data/valid-xmls/005-refs.xml
+t/data/valid-xmls/006-xhtml.xml
+t/data/valid-xmls/007-xhtml-2.xml
+t/data/valid-xmls/008-xhtml-3.xml
+t/data/valid-xmls/009-set.xml
 t/pod-coverage.t
 t/pod.t
