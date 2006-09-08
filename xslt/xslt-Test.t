@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::XML tests => 6;
+use Test::XML tests => 7;
 use IO::All;
 
 use XML::LibXML;
@@ -19,7 +19,7 @@ sub get_files_list
     "valid-xmls/0031-with-products.xml",
     "valid-xmls/004-products-with-creators.xml",
     "valid-xmls/005-refs.xml",
-    #"valid-xmls/006-xhtml.xml",
+    "valid-xmls/006-xhtml.xml",
     #"valid-xmls/007-xhtml-2.xml",
     #"valid-xmls/008-xhtml-3.xml",
     #"valid-xmls/009-set.xml",
@@ -29,7 +29,7 @@ sub get_files_list
 
 my @xml_files = get_files_list();
 
-# TEST:$num_xslt=6
+# TEST:$num_xslt=7
 # TEST*$num_xslt
 foreach my $xml_file (@xml_files)
 {
