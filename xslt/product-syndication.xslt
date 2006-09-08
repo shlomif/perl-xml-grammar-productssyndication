@@ -28,12 +28,12 @@
     </xsl:element>
     <xsl:apply-templates mode="copy-no-ns" 
         select="desc/*" />
-    <xsl:apply-templates select="prod" />
-    <xsl:apply-templates select="cat" />
+    <xsl:apply-templates select="prod|cat" />
 </xsl:template>
 
 <xsl:template match="prod">
     <div class="prod">
+        <xsl:attribute name="id"><xsl:value-of select="@id" /></xsl:attribute>
         <div class="head">
             <p class="prod_img">
                 <xsl:element name="a">
