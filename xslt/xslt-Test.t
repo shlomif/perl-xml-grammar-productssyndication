@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::XML tests => 8;
+use Test::XML tests => 9;
 use IO::All;
 
 use XML::LibXML;
@@ -13,15 +13,15 @@ sub get_files_list
 {
     my @files = 
     (
-    "valid-xmls/001-empty-cat.xml",
-    "valid-xmls/002-nested-cat.xml",
-    "valid-xmls/0030-with-one-product.xml",
-    "valid-xmls/0031-with-products.xml",
-    "valid-xmls/004-products-with-creators.xml",
-    "valid-xmls/005-refs.xml",
-    "valid-xmls/006-xhtml.xml",
-    "valid-xmls/007-xhtml-2.xml",
-    #"valid-xmls/008-xhtml-3.xml",
+    "valid-xmls/001-empty-cat.xml", # TEST
+    "valid-xmls/002-nested-cat.xml", # TEST
+    "valid-xmls/0030-with-one-product.xml", # TEST
+    "valid-xmls/0031-with-products.xml", # TEST
+    "valid-xmls/004-products-with-creators.xml", # TEST
+    "valid-xmls/005-refs.xml", # TEST
+    "valid-xmls/006-xhtml.xml", # TEST
+    "valid-xmls/007-xhtml-2.xml", # TEST
+    "valid-xmls/008-xhtml-3.xml", # TEST
     #"valid-xmls/009-set.xml",
     );
     return @files;
@@ -29,8 +29,6 @@ sub get_files_list
 
 my @xml_files = get_files_list();
 
-# TEST:$num_xslt=8
-# TEST*$num_xslt
 foreach my $xml_file (@xml_files)
 {
     my $parser = XML::LibXML->new();
