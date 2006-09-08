@@ -75,6 +75,13 @@
             <xsl:apply-templates mode="copy-no-ns"
                 select="desc/*" />
         </div>
+        <xsl:if test="ref">
+            <div class="affil">
+                <ul>
+                    <xsl:apply-templates select="ref" />
+                </ul>
+            </div>
+        </xsl:if>
     </div>
 </xsl:template>
 <xsl:template mode="copy-no-ns" match="*">
@@ -84,4 +91,21 @@
     </xsl:element>
 </xsl:template>
 
+<xsl:template match="ref">
+    <li>
+        <a>
+            <xsl:attribute name="href">
+                <xsl:value-of select="@href" />
+            </xsl:attribute>
+            <xsl:choose>
+                <xsl:when test="@affil = 'amazon'">
+                    <xsl:text>Amazon</xsl:text>
+                </xsl:when>
+                <xsl:when test="@affil = 'bn'">
+                    <xsl:text>Barnes &amp; Noble</xsl:text>
+                </xsl:when>
+            </xsl:choose>
+        </a>
+    </li>
+</xsl:template>
 </xsl:stylesheet>
