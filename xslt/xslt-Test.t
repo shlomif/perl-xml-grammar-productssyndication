@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::XML tests => 9;
+use Test::XML tests => 10;
 use IO::All;
 
 use XML::LibXML;
@@ -22,7 +22,7 @@ sub get_files_list
     "valid-xmls/006-xhtml.xml", # TEST
     "valid-xmls/007-xhtml-2.xml", # TEST
     "valid-xmls/008-xhtml-3.xml", # TEST
-    #"valid-xmls/009-set.xml",
+    "valid-xmls/009-set.xml", # TEST
     );
     return @files;
 }

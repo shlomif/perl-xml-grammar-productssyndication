@@ -29,7 +29,7 @@
     </xsl:element>
     <xsl:apply-templates mode="copy-no-ns" 
         select="desc/*" />
-    <xsl:apply-templates select="prod|cat" />
+    <xsl:apply-templates select="prod|cat|set" />
     </div>
 </xsl:template>
 
@@ -37,39 +37,7 @@
     <div class="prod">
         <xsl:attribute name="id"><xsl:value-of select="@id" /></xsl:attribute>
         <div class="head">
-            <p class="prod_img">
-                <xsl:element name="a">
-                    <xsl:attribute name="href">
-                        <xsl:text>http://www.amazon.com/exec/obidos/ASIN/</xsl:text>
-                        <xsl:value-of select="isbn" />
-                        <xsl:text>/ref=nosim/shlomifishhom-20/</xsl:text>
-                    </xsl:attribute>
-                    <xsl:element name="img">
-                        <xsl:attribute name="alt">
-                            <xsl:text>Preview</xsl:text>
-                        </xsl:attribute>
-                        <xsl:attribute name="src">
-                            <xsl:text>images/</xsl:text>
-                            <xsl:value-of select="@id" />
-                            <xsl:text>.jpg</xsl:text>
-                        </xsl:attribute>
-                    </xsl:element>
-                </xsl:element>
-            </p>
-            <p class="prod_title">
-                <xsl:element name="a">
-                    <xsl:attribute name="href">
-                        <xsl:text>http://www.amazon.com/exec/obidos/ASIN/</xsl:text>
-                        <xsl:value-of select="isbn" />
-                        <xsl:text>/ref=nosim/shlomifishhom-20/</xsl:text>
-                    </xsl:attribute>
-                    <xsl:value-of select="title" />
-                </xsl:element>
-                <xsl:if test="creator">
-                    <br />
-                    <xsl:value-of select="creator" />
-                </xsl:if>
-            </p>
+            <xsl:call-template name="prod_common" />
         </div>
         <div class="desc">
             <xsl:apply-templates mode="copy-no-ns"
@@ -107,5 +75,70 @@
             </xsl:choose>
         </a>
     </li>
+</xsl:template>
+
+<xsl:template match="set">
+    <div class="prod_set">
+        <xsl:attribute name="id">
+            <xsl:value-of select="@id" />
+        </xsl:attribute>
+        <p class="title">
+            <strong><xsl:value-of select="title" /></strong>
+        </p>
+        <div class="head">
+            <ul>
+                <xsl:apply-templates select="prod" mode="in-set" />
+            </ul>
+        </div>
+        <div class="desc">
+            <xsl:apply-templates mode="copy-no-ns"
+                select="desc/*" />            
+        </div>
+    </div>
+</xsl:template>
+
+<xsl:template match="prod" mode="in-set">
+    <li>
+        <xsl:attribute name="id">
+            <xsl:value-of select="@id" />
+        </xsl:attribute>
+        <xsl:call-template name="prod_common" />
+    </li>
+</xsl:template>
+
+<xsl:template name="prod_common">
+        <p class="prod_img">
+            <xsl:element name="a">
+                <xsl:attribute name="href">
+                    <xsl:text>http://www.amazon.com/exec/obidos/ASIN/</xsl:text>
+                    <xsl:value-of select="isbn" />
+                    <xsl:text>/ref=nosim/shlomifishhom-20/</xsl:text>
+                </xsl:attribute>
+                <xsl:element name="img">
+                    <xsl:attribute name="alt">
+                        <xsl:text>Preview</xsl:text>
+                    </xsl:attribute>
+                    <xsl:attribute name="src">
+                        <xsl:text>images/</xsl:text>
+                        <xsl:value-of select="@id" />
+                        <xsl:text>.jpg</xsl:text>
+                    </xsl:attribute>
+                </xsl:element>
+            </xsl:element>
+        </p>
+        <p class="prod_title">
+            <xsl:element name="a">
+                <xsl:attribute name="href">
+                    <xsl:text>http://www.amazon.com/exec/obidos/ASIN/</xsl:text>
+                    <xsl:value-of select="isbn" />
+                    <xsl:text>/ref=nosim/shlomifishhom-20/</xsl:text>
+                </xsl:attribute>
+                <xsl:value-of select="title" />
+            </xsl:element>
+            <xsl:if test="creator">
+                <br />
+                <xsl:value-of select="creator" />
+            </xsl:if>
+        </p>
 </xsl:template>
 </xsl:stylesheet>
