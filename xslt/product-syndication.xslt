@@ -20,15 +20,17 @@
 </xsl:template>
 
 <xsl:template match="cat">
-    <xsl:element name="h{count(ancestor-or-self::cat)+1}">
+    <div class="prod_cat">
         <xsl:attribute name="id">
             <xsl:value-of select="@id" />
         </xsl:attribute>
+    <xsl:element name="h{count(ancestor-or-self::cat)+1}">
         <xsl:value-of select="title" />
     </xsl:element>
     <xsl:apply-templates mode="copy-no-ns" 
         select="desc/*" />
     <xsl:apply-templates select="prod|cat" />
+    </div>
 </xsl:template>
 
 <xsl:template match="prod">
