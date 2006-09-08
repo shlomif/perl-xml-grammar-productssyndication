@@ -1,15 +1,9 @@
 XML::Grammar::ProductsSyndication
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
-
-A README file is required for CPAN modules since CPAN extracts the README
-file from a module distribution so that people browsing the archive
-can use it get an idea of the modules uses. It is usually a good idea
-to provide version information here so that people can decide whether
-fixes for the module are worth downloading.
+This module implements an XML grammar to syndicate products on one's web-sites.
+It has tags for categories (<cat>'s), products (<prod>'s) and sets of products
+(<set>'s), that allow to organise one products' into categories and render
+them into a well structured XHTML that can be further styled using CSS.
 
 INSTALLATION
 
@@ -19,7 +13,6 @@ To install this module, run the following commands:
     ./Build
     ./Build test
     ./Build install
-
 
 SUPPORT AND DOCUMENTATION
 
@@ -45,4 +38,5 @@ COPYRIGHT AND LICENCE
 
 Copyright (C) 2006 Shlomi Fish
 
-This program is released under the following license: bsd
+This program is released under the following license: MIT X11.
+

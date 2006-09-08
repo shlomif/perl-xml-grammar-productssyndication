@@ -5,7 +5,7 @@ use strict;
 
 =head1 NAME
 
-XML::Grammar::ProductsSyndication - The great new XML::Grammar::ProductsSyndication!
+XML::Grammar::ProductsSyndication - an XML Grammar for ProductsSyndication.
 
 =head1 VERSION
 
@@ -17,35 +17,26 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+    my $syndicate = 
+        XML::Grammar::ProductsSyndication->new(
+            {
+                'source' =>
+                {
+                    'file' => "products.xml",
+                },
+            }
+        );
 
-Perhaps a little code snippet.
+    # A LibXML compatible XHTML DOM
+    my $xhtml = $syndicate->get_xhtml();
 
-    use XML::Grammar::ProductsSyndication;
-
-    my $foo = XML::Grammar::ProductsSyndication->new();
-    ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+    $syndicate->download_preview_images(
+        {
+            'dir' => "mydir/",
+        }
+        );
 
 =head1 FUNCTIONS
-
-=head2 function1
-
-=cut
-
-sub function1 {
-}
-
-=head2 function2
-
-=cut
-
-sub function2 {
-}
 
 =head1 AUTHOR
 
