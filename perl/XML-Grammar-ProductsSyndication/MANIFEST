@@ -51,7 +51,19 @@ MANIFEST
 META.yml # Will be created by "make dist"
 README
 t/00-load.t
+t/01-validate.t
+t/02-xslt-output.t
 t/boilerplate.t
+t/data/output-htmls/001-empty-cat.html
+t/data/output-htmls/002-nested-cat.html
+t/data/output-htmls/0030-with-one-product.html
+t/data/output-htmls/0031-with-products.html
+t/data/output-htmls/004-products-with-creators.html
+t/data/output-htmls/005-refs.html
+t/data/output-htmls/006-xhtml.html
+t/data/output-htmls/007-xhtml-2.html
+t/data/output-htmls/008-xhtml-3.html
+t/data/output-htmls/009-set.html
 t/data/valid-xmls/001-empty-cat.xml
 t/data/valid-xmls/002-nested-cat.xml
 t/data/valid-xmls/0030-with-one-product.xml

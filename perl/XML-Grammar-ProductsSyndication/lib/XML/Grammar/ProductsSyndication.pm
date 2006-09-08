@@ -5,11 +5,14 @@ use strict;
 
 use XML::Grammar::ProductsSyndication::ConfigData;
 use XML::LibXML;
+use XML::LibXSLT;
 
 use Moose;
 
 has '_filename' => (isa => 'Str', is => 'rw');
 has '_data_dir' => (isa => 'Str', is => 'rw');
+has '_xml_parser' => (isa => "XML::LibXML", is => 'rw');
+has '_stylesheet' => (isa => "XML::LibXSLT::StylesheetWrapper", is => 'rw');
 
 =head1 NAME
 
@@ -95,6 +98,25 @@ sub _init
     return 0;
 }
 
+sub _get_xml_parser
+{
+    my $self = shift;
+
+    if (!defined($self->_xml_parser()))
+    {
+        $self->_xml_parser(XML::LibXML->new());
+        $self->_xml_parser()->validation(0);
+    }
+    return $self->_xml_parser();
+}
+
+sub _get_source_dom
+{
+    my $self = shift;
+
+    return $self->_get_xml_parser()->parse_file($self->_filename());
+}
+
 =head2 $processor->is_valid()
 
 Checks if the filename validates according to the DTD.
@@ -114,14 +136,62 @@ sub is_valid
             ),
         );
 
-    my $p = XML::LibXML->new();
-    $p->validation(0);
-
-    my $dom = $p->parse_file($self->_filename());
-    
-    return $dom->validate($dtd);
+    return $self->_get_source_dom()->validate($dtd);
 }
 
+sub _get_stylesheet
+{
+    my $self = shift;
+
+    if (!defined($self->_stylesheet()))
+    {
+        my $xslt = XML::LibXSLT->new();
+
+        my $style_doc = $self->_get_xml_parser()->parse_file(
+                File::Spec->catfile(
+                    $self->_data_dir(), 
+                    "product-syndication.xslt"
+                ),
+            );
+
+        $self->_stylesheet($xslt->parse_stylesheet($style_doc));
+    }
+    return $self->_stylesheet();
+}
+
+=head2 $processor->transform_into_html({ 'output' => $output, })
+
+Transforms the output into HTML, and returns the results. If C<'output'> is 
+C<'xml'> returns the L<XML::LibXML> XML DOM. If C<'output'> is C<'string'>
+returns the XML as a monolithic string. Other C<'output'> formats are
+undefined.
+
+=cut
+
+sub transform_into_html
+{
+    my ($self, $args) = @_;
+
+    my $source_dom = $self->_get_source_dom();
+    my $stylesheet = $self->_get_stylesheet();
+
+    my $results = $stylesheet->transform($source_dom);
+
+    my $medium = $args->{output};
+
+    if ($medium eq "string")
+    {
+        return $stylesheet->output_string($results);
+    }
+    elsif ($medium eq "xml")
+    {
+        return $results;
+    }
+    else
+    {
+        die "Unknown medium";
+    }
+}
 =begin unused
 
 =head2 $processor->meta();
