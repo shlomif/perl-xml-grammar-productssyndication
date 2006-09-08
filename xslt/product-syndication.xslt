@@ -64,7 +64,11 @@
                         <xsl:text>/ref=nosim/shlomifishhom-20/</xsl:text>
                     </xsl:attribute>
                     <xsl:value-of select="title" />
-                </xsl:element>                    
+                </xsl:element>
+                <xsl:if test="creator">
+                    <br />
+                    <xsl:value-of select="creator" />
+                </xsl:if>
             </p>
         </div>
         <div class="desc">
