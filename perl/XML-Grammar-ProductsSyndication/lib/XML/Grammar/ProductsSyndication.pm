@@ -242,6 +242,10 @@ An Amazon.com web services token. See L<XML::Amazon>.
 
 An optional Amazon.com associate ID. See L<XML::Amazon>.
 
+=item * overwrite
+
+If true, instructs to overwrite the files in case they exist.
+
 =back
 
 =cut
@@ -286,6 +290,8 @@ sub update_cover_images
 
     my $size = $args->{size};
     my $name_cb = $args->{name_cb};
+    my $overwrite = $args->{overwrite};
+
     my $amazon_token = $args->{amazon_token};
     my @amazon_associate = 
         (
@@ -315,31 +321,35 @@ sub update_cover_images
 
         my $image_url = $item->image($size);
 
-        my $response = $ua->get($image_url);
-        if ($response->is_success)
+        my $filename = 
+            $name_cb->(
+                {
+                    'xml_node' => $prod,
+                    'id' => $prod->getAttribute("id"),
+                    'isbn' => $asin,
+                }
+            );
+        
+        if ($overwrite || (! -e $filename))
         {
-            my $filename = 
-                $name_cb->(
-                    {
-                        'xml_node' => $prod,
-                        'id' => $prod->getAttribute("id"),
-                        'isbn' => $asin,
-                    }
-                );
-            open my $out, ">", $filename
-                or die "Could not open file '$filename'";
-            print {$out}
-                $self->_transform_image(
-                    {
-                        %$args,
-                        'content' => $response->content(),
-                    }
-                );
-            close ($out);
-        }
-        else
-        {
-            die $response->status_line();
+            my $response = $ua->get($image_url);
+            if ($response->is_success)
+            {
+                open my $out, ">", $filename
+                    or die "Could not open file '$filename'";
+                print {$out}
+                    $self->_transform_image(
+                        {
+                            %$args,
+                            'content' => $response->content(),
+                        }
+                    );
+                close ($out);
+            }
+            else
+            {
+                die $response->status_line();
+            }
         }
     }
 }

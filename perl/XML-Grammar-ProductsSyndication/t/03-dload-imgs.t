@@ -7,7 +7,7 @@ use File::Spec;
 
 use lib File::Spec->catdir(File::Spec->curdir(), "t", "lib");
 
-use Test::More tests => 3;
+use Test::More tests => 5;
 
 use XML::Grammar::ProductsSyndication::Mock;
 
@@ -96,5 +96,48 @@ is_deeply(
     "Testing for the existence of the jpegs",
 );
 
-cleanup();
+@LWP::UserAgent::got_get_params = ();
 
+$ps->update_cover_images(
+    {
+        'size' => "l",
+        'resize_to' => { 'width' => 100, 'height' => 100 },
+        'name_cb' => \&name_file,
+        'amazon_token' => "Foobar",
+        'amazon_associate' => "shlomifishhom-20",
+    }
+);
+
+
+# TEST
+is_deeply (
+    \@LWP::UserAgent::got_get_params,
+    [
+    ],
+    "Testing for not fetching the URLs upon update.",
+);
+
+
+$ps->update_cover_images(
+    {
+        'size' => "l",
+        'resize_to' => { 'width' => 100, 'height' => 100 },
+        'name_cb' => \&name_file,
+        'amazon_token' => "Foobar",
+        'amazon_associate' => "shlomifishhom-20",
+        'overwrite' => 1,
+    }
+);
+
+# TEST
+is_deeply (
+    \@LWP::UserAgent::got_get_params,
+    [
+        [ "http://www.amazon.com/image-for/size=l/asin=0451529308/" ],
+        [ "http://www.amazon.com/image-for/size=l/asin=014036711X/"],
+        [ "http://www.amazon.com/image-for/size=l/asin=0596000278/"],
+    ],
+    "Testing for overwriting the files.",
+);
+
+cleanup();
