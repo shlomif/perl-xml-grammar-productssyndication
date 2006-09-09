@@ -264,19 +264,12 @@ sub _transform_image
     else
     {
         my ($req_w, $req_h) = @{$resize_to}{qw(width height)};
+
         my $image = Imager->new();
         $image->read(data => $content, type => "jpeg");
-        my $img_w = $image->getwidth();
-        my $img_h = $image->getheight();
 
-        if ($img_h * $req_w / $img_w < $req_h )
-        {
-            $image = $image->scale ($req_w, $img_h * $req_w / $img_w);
-        }
-        else
-        {
-            $image = $image->scale ($img_w * $req_h / $img_h, $req_h);
-        }
+        $image = $image->scale(xpixels => $req_w, ypixels => $req_h, type => 'min');
+
         my $buffer = "";
         $image->write (data => \$buffer, type => "jpeg");
 
