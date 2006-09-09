@@ -310,10 +310,6 @@ sub update_cover_images
         my ($asin_node) = $prod->findnodes('isbn');
         my $asin = $asin_node->textContent();
 
-        my $item = $amazon->asin($asin);
-
-        my $image_url = $item->image($size);
-
         my $filename = 
             $name_cb->(
                 {
@@ -321,10 +317,14 @@ sub update_cover_images
                     'id' => $prod->getAttribute("id"),
                     'isbn' => $asin,
                 }
-            );
+            );      
         
         if ($overwrite || (! -e $filename))
         {
+            my $item = $amazon->asin($asin);
+
+            my $image_url = $item->image($size);
+
             my $response = $ua->get($image_url);
             if ($response->is_success)
             {
