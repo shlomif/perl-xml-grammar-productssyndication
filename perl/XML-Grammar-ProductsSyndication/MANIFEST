@@ -54,7 +54,11 @@ README
 t/00-load.t
 t/01-validate.t
 t/02-xslt-output.t
+t/03-dload-imgs.t
 t/boilerplate.t
+t/data/images/014036711X-l.jpg
+t/data/images/0451529308-l.jpg
+t/data/images/0596000278-l.jpg
 t/data/output-htmls/001-empty-cat.html
 t/data/output-htmls/002-nested-cat.html
 t/data/output-htmls/0030-with-one-product.html
@@ -75,5 +79,8 @@ t/data/valid-xmls/006-xhtml.xml
 t/data/valid-xmls/007-xhtml-2.xml
 t/data/valid-xmls/008-xhtml-3.xml
 t/data/valid-xmls/009-set.xml
+t/data/valid-xmls/images-test.xml
+t/lib/XML/Grammar/ProductsSyndication/Mock.pm
+t/output/images/PLACEHOLDER
 t/pod-coverage.t
 t/pod.t

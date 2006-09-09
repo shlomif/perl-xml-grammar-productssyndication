@@ -4,8 +4,12 @@ use warnings;
 use strict;
 
 use XML::Grammar::ProductsSyndication::ConfigData;
+
 use XML::LibXML;
 use XML::LibXSLT;
+use XML::Amazon;
+use LWP::UserAgent;
+use Imager;
 
 use Moose;
 
@@ -13,6 +17,7 @@ has '_filename' => (isa => 'Str', is => 'rw');
 has '_data_dir' => (isa => 'Str', is => 'rw');
 has '_xml_parser' => (isa => "XML::LibXML", is => 'rw');
 has '_stylesheet' => (isa => "XML::LibXSLT::StylesheetWrapper", is => 'rw');
+has '_source_dom' => (isa => "XML::LibXML::Document", is => 'rw');
 
 =head1 NAME
 
@@ -115,7 +120,11 @@ sub _get_source_dom
 {
     my $self = shift;
 
-    return $self->_get_xml_parser()->parse_file($self->_filename());
+    if (!defined($self->_source_dom()))
+    {
+        $self->_source_dom($self->_get_xml_parser()->parse_file($self->_filename()));
+    }
+    return $self->_source_dom();
 }
 
 =head2 $processor->is_valid()
@@ -193,6 +202,148 @@ sub transform_into_html
         die "Unknown medium";
     }
 }
+
+=head2 $self->update_cover_images({...});
+
+Updates the cover images from Amazon. Receives one hash ref being the
+arguments. Valid keys are:
+
+=over 4
+
+=item * size
+
+The request size of the image - C<'s'>, C<'m'>, C<'l'>,
+
+=item * resize_to
+
+An optional hash ref containing width and height maximal dimensions of the
+image to clip to.
+
+=item * name_cb
+
+A callback to determine the fully qualified path of the file. Receives the
+following information:
+
+=over 4
+
+=item * xml_node
+
+=item * id
+
+=item * isbn
+
+=back
+
+=item * amazon_token
+
+An Amazon.com web services token. See L<XML::Amazon>.
+
+=item * amazon_associate
+
+An optional Amazon.com associate ID. See L<XML::Amazon>.
+
+=back
+
+=cut
+
+sub _transform_image
+{
+    my ($self, $args) = @_;
+
+    my $content = $args->{content};
+    my $resize_to = $args->{resize_to};
+
+    if (!defined($resize_to))
+    {
+        return $content;
+    }
+    else
+    {
+        my ($req_w, $req_h) = @{$resize_to}{qw(width height)};
+        my $image = Imager->new();
+        $image->read(data => $content, type => "jpeg");
+        my $img_w = $image->getwidth();
+        my $img_h = $image->getheight();
+
+        if ($img_h * $req_w / $img_w < $req_h )
+        {
+            $image = $image->scale ($req_w, $img_h * $req_w / $img_w);
+        }
+        else
+        {
+            $image = $image->scale ($img_w * $req_h / $img_h, $req_h);
+        }
+        my $buffer = "";
+        $image->write (data => \$buffer, type => "jpeg");
+
+        return $buffer;
+    }
+}
+
+sub update_cover_images
+{
+    my ($self, $args) = @_;
+
+    my $size = $args->{size};
+    my $name_cb = $args->{name_cb};
+    my $amazon_token = $args->{amazon_token};
+    my @amazon_associate = 
+        (
+            exists($args->{amazon_associate}) ? 
+                (associate => $args->{amazon_associate},) :
+                ()
+        );
+
+    my $dom = $self->_get_source_dom();
+
+    my @products = $dom->findnodes('//prod');
+
+    my $amazon =
+        XML::Amazon->new(
+            token => $amazon_token,
+            @amazon_associate,
+        );
+
+    my $ua = LWP::UserAgent->new();
+
+    foreach my $prod (@products)
+    {
+        my ($asin_node) = $prod->findnodes('isbn');
+        my $asin = $asin_node->textContent();
+
+        my $item = $amazon->asin($asin);
+
+        my $image_url = $item->image($size);
+
+        my $response = $ua->get($image_url);
+        if ($response->is_success)
+        {
+            my $filename = 
+                $name_cb->(
+                    {
+                        'xml_node' => $prod,
+                        'id' => $prod->getAttribute("id"),
+                        'isbn' => $asin,
+                    }
+                );
+            open my $out, ">", $filename
+                or die "Could not open file '$filename'";
+            print {$out}
+                $self->_transform_image(
+                    {
+                        %$args,
+                        'content' => $response->content(),
+                    }
+                );
+            close ($out);
+        }
+        else
+        {
+            die $response->status_line();
+        }
+    }
+}
+
 =begin unused
 
 =head2 $processor->meta();
