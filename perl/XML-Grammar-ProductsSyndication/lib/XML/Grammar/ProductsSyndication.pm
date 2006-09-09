@@ -30,7 +30,7 @@ our $VERSION = '0.01';
 
     use XML::Grammar::ProductsSyndication;
 
-    my $syndicate = 
+    my $synd = 
         XML::Grammar::ProductsSyndication->new(
             {
                 'source' =>
@@ -41,9 +41,10 @@ our $VERSION = '0.01';
         );
 
     # A LibXML compatible XHTML DOM
-    my $xhtml = $syndicate->get_xhtml();
+    my $xhtml = $synd->transform_into_html({ 'output' => "xml" });
 
-    $syndicate->download_preview_images(
+    # Not implemented yet!
+    $synd->download_preview_images(
         {
             'dir' => "mydir/",
         }
@@ -214,6 +215,14 @@ L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=XML::Grammar::ProductsSyndicati
 I will be notified, and then you'll automatically be notified of progress on
 your bug as I make changes.
 
+=head1 TODO
+
+=over 4
+
+=item * Automatically Download Preview Images from Amazon.com
+
+=back
+
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
@@ -243,6 +252,11 @@ L<http://search.cpan.org/dist/XML::Grammar::ProductsSyndication>
 =back
 
 =head1 ACKNOWLEDGEMENTS
+
+* L<http://www.zvon.org/> for their excellent XSLT Tutorial.
+
+* L<http://search.cpan.org/~pajas/> for squashing some L<XML::LibXML> bugs
+I reported to him.
 
 =head1 COPYRIGHT & LICENSE
 
