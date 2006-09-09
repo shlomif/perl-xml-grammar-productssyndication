@@ -45,6 +45,7 @@ extradata/xhtml-style-1.mod
 extradata/xhtml-symbol.ent
 extradata/xhtml-table-1.mod
 extradata/xhtml-text-1.mod
+inc/Test/Run/Builder.pm
 lib/XML/Grammar/ProductsSyndication.pm
 Makefile.PL
 MANIFEST

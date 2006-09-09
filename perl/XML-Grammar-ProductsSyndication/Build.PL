@@ -1,6 +1,11 @@
 use strict;
 use warnings;
-use Module::Build;
+
+use File::Spec;
+use lib File::Spec->catdir(File::Spec->curdir(), "inc");
+
+use Test::Run::Builder;
+
 use File::Find;
 
 sub data_inc
@@ -21,7 +26,7 @@ sub filter_files
 
 find({ wanted => \&filter_files, no_chdir => 1}, "extradata");
 
-my $builder = Module::Build->new(
+my $builder = Test::Run::Builder->new(
     module_name         => 'XML::Grammar::ProductsSyndication',
     license             => 'bsd',
     dist_author         => 'Shlomi Fish <shlomif@cpan.org>',
