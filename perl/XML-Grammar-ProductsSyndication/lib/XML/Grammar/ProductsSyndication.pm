@@ -25,11 +25,11 @@ XML::Grammar::ProductsSyndication - an XML Grammar for ProductsSyndication.
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
@@ -412,11 +412,23 @@ L<http://search.cpan.org/dist/XML::Grammar::ProductsSyndication>
 * L<http://search.cpan.org/~pajas/> for squashing some L<XML::LibXML> bugs
 I reported to him.
 
+=head1 TODO
+
+=over 4
+
+=item * Trace the progress of the Amazon.com progress.
+
+=item * More XSLT customisation.
+
+=item * Generate a table-of-contents.
+
+=back
+
 =head1 COPYRIGHT & LICENSE
 
 Copyright 2006 Shlomi Fish, all rights reserved.
 
-This program is released under the following license: bsd
+This program is released under the following license: MIT X11.
 
 =cut
 
