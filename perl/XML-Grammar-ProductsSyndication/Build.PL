@@ -18,7 +18,7 @@ my @extradata_files;
 sub filter_files
 {
     my $filename = $File::Find::name;
-    if ((-f $filename) && ($filename =~ /\.(?:mod|xslt|dtd|ent|cat)$/))
+    if ((-f $filename) && ($filename =~ /\.(?:mod|xslt|dtd|ent|cat|jpg|xcf\.bz2)$/))
     {
         push @extradata_files, $filename;
     }

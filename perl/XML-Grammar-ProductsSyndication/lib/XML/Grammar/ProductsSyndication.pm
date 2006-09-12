@@ -18,6 +18,7 @@ has '_data_dir' => (isa => 'Str', is => 'rw');
 has '_xml_parser' => (isa => "XML::LibXML", is => 'rw');
 has '_stylesheet' => (isa => "XML::LibXSLT::StylesheetWrapper", is => 'rw');
 has '_source_dom' => (isa => "XML::LibXML::Document", is => 'rw');
+has '_img_fn' => (isa => 'Str', is => 'rw');
 
 =head1 NAME
 
@@ -277,6 +278,29 @@ sub _transform_image
     }
 }
 
+sub _get_not_available_cover_image_data
+{
+    my $self = shift;
+    open my $in, "<", File::Spec->catfile($self->_data_dir(), "na-cover.jpg");
+    my $content = "";
+    local $/;
+    $content = <$in>;
+    close($in);
+    return $content;
+}
+
+sub _write_image
+{
+    my ($self, $contents) = @_;
+
+    my $filename = $self->_img_fn();
+
+    open my $out, ">", $filename
+        or die "Could not open file '$filename'";
+    print {$out} $contents;
+    close ($out);
+}
+
 sub update_cover_images
 {
     my ($self, $args) = @_;
@@ -310,38 +334,51 @@ sub update_cover_images
         my ($asin_node) = $prod->findnodes('isbn');
         my $asin = $asin_node->textContent();
 
-        my $filename = 
+        $self->_img_fn(
             $name_cb->(
                 {
                     'xml_node' => $prod,
                     'id' => $prod->getAttribute("id"),
                     'isbn' => $asin,
                 }
-            );      
+            )
+        );
         
-        if ($overwrite || (! -e $filename))
+        if ($overwrite || (! -e $self->_img_fn()))
         {
             my $item = $amazon->asin($asin);
 
             my $image_url = $item->image($size);
-
-            my $response = $ua->get($image_url);
-            if ($response->is_success)
+            if (!defined($image_url))
             {
-                open my $out, ">", $filename
-                    or die "Could not open file '$filename'";
-                print {$out}
+                $self->_write_image(
                     $self->_transform_image(
                         {
                             %$args,
-                            'content' => $response->content(),
+                            'content' => 
+                                $self->_get_not_available_cover_image_data(),
                         }
-                    );
-                close ($out);
+                    )
+                );
             }
             else
             {
-                die $response->status_line();
+                my $response = $ua->get($image_url);
+                if ($response->is_success)
+                {
+                    $self->_write_image(
+                        $self->_transform_image(
+                            {
+                                %$args,
+                                'content' => $response->content(),
+                            },
+                        ),
+                    );
+                }
+                else
+                {
+                    die $response->status_line();
+                }
             }
         }
     }
