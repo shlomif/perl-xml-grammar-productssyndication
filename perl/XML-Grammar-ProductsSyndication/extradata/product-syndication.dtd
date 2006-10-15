@@ -80,3 +80,4 @@ driver -->
 <!ATTLIST creator type (author|artist|performer|composer) "author">
 <!ATTLIST ref href CDATA "" affil CDATA "">
 <!ATTLIST set id ID #REQUIRED>
+<!ATTLIST isbn disable (0|1) "0">
