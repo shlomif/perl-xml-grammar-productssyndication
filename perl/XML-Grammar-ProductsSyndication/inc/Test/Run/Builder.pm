@@ -52,8 +52,10 @@ sub do_test_run_tests
 
     my $test_run =
         Test::Run::CmdLine::Iface->new(
-            'test_files' => [glob("t/*.t")],
-            # 'backend_params' => $self->_get_backend_params(),
+            {
+                'test_files' => [glob("t/*.t")],
+                # 'backend_params' => $self->_get_backend_params(),
+            }
         );
 
     return $test_run->run();
