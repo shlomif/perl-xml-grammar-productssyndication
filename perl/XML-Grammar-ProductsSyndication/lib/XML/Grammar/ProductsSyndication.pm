@@ -329,9 +329,17 @@ sub update_cover_images
 
     my $ua = LWP::UserAgent->new();
 
+    PROD_LOOP:
     foreach my $prod (@products)
     {
         my ($asin_node) = $prod->findnodes('isbn');
+
+        my $disable = $asin_node->getAttribute("disable");
+        if (defined($disable) && ($disable eq "1"))
+        {
+            next PROD_LOOP;
+        }
+
         my $asin = $asin_node->textContent();
 
         $self->_img_fn(
