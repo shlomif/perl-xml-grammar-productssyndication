@@ -71,6 +71,7 @@ t/data/output-htmls/006-xhtml.html
 t/data/output-htmls/007-xhtml-2.html
 t/data/output-htmls/008-xhtml-3.html
 t/data/output-htmls/009-set.html
+t/data/output-htmls/010-disabled-isbn.html
 t/data/valid-xmls/001-empty-cat.xml
 t/data/valid-xmls/002-nested-cat.xml
 t/data/valid-xmls/0030-with-one-product.xml

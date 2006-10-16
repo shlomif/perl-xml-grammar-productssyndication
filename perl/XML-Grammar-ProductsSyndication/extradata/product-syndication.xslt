@@ -107,7 +107,8 @@
 </xsl:template>
 
 <xsl:template name="prod_common">
-        <p class="prod_img">
+    <p class="prod_img">
+        <xsl:if test="not (isbn/@disable = 1)">
             <xsl:element name="a">
                 <xsl:attribute name="href">
                     <xsl:text>http://www.amazon.com/exec/obidos/ASIN/</xsl:text>
@@ -125,8 +126,11 @@
                     </xsl:attribute>
                 </xsl:element>
             </xsl:element>
-        </p>
-        <p class="prod_title">
+        </xsl:if>
+    </p>
+    <p class="prod_title">
+        <xsl:choose>
+            <xsl:when test="not (isbn/@disable = 1)">
             <xsl:element name="a">
                 <xsl:attribute name="href">
                     <xsl:text>http://www.amazon.com/exec/obidos/ASIN/</xsl:text>
@@ -135,6 +139,11 @@
                 </xsl:attribute>
                 <xsl:value-of select="title" />
             </xsl:element>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:value-of select="title" />
+        </xsl:otherwise>
+        </xsl:choose>
             <xsl:if test="creator">
                 <br />
                 <xsl:value-of select="creator" />
