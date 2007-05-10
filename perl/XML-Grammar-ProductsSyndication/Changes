@@ -1,5 +1,8 @@
 Revision history for XML::Grammar::ProductsSyndication
 
+        - Added the "disable" attribute to the "isbn" tag, and added
+        support for it everywhere.
+
 0.02    Sat Sep  9 17:19:01 IDT 2006
         - Added the ability to download Amazon.com images.
         
