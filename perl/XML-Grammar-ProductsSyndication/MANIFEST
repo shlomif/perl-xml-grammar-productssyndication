@@ -73,6 +73,7 @@ t/data/output-htmls/007-xhtml-2.html
 t/data/output-htmls/008-xhtml-3.html
 t/data/output-htmls/009-set.html
 t/data/output-htmls/010-disabled-isbn.html
+t/data/output-htmls/011-appendtoc.html
 t/data/valid-xmls/001-empty-cat.xml
 t/data/valid-xmls/002-nested-cat.xml
 t/data/valid-xmls/0030-with-one-product.xml
@@ -84,6 +85,7 @@ t/data/valid-xmls/007-xhtml-2.xml
 t/data/valid-xmls/008-xhtml-3.xml
 t/data/valid-xmls/009-set.xml
 t/data/valid-xmls/010-disabled-isbn.xml
+t/data/valid-xmls/011-appendtoc.xml
 t/data/valid-xmls/images-test.xml
 t/lib/XML/Grammar/ProductsSyndication/Mock.pm
 t/output/images/PLACEHOLDER
