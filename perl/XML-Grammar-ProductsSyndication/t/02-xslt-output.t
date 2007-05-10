@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::XML tests => 11;
+use Test::XML tests => 12;
 
 use File::Spec;
 use XML::Grammar::ProductsSyndication;
@@ -23,6 +23,7 @@ sub get_files_list
     "008-xhtml-3", # TEST
     "009-set", # TEST
     "010-disabled-isbn", # TEST
+    "011-appendtoc", # TEST
     );
 }
 

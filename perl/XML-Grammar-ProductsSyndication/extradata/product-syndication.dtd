@@ -81,3 +81,4 @@ driver -->
 <!ATTLIST ref href CDATA "" affil CDATA "">
 <!ATTLIST set id ID #REQUIRED>
 <!ATTLIST isbn disable (0|1) "0">
+<!ATTLIST desc appendtoc CDATA "">

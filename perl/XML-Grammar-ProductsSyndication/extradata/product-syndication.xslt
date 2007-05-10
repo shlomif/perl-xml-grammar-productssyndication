@@ -29,6 +29,10 @@
     </xsl:element>
     <xsl:apply-templates mode="copy-no-ns" 
         select="desc/*" />
+    <xsl:if test="desc/@appendtoc">
+        <xsl:apply-templates mode="gen-toc" select="." />
+    </xsl:if>
+    
     <xsl:apply-templates select="prod|cat|set" />
     </div>
 </xsl:template>
@@ -150,4 +154,30 @@
             </xsl:if>
         </p>
 </xsl:template>
+
+<xsl:template mode="gen-toc" match="cat">
+    <ul>
+        <xsl:apply-templates mode="gen-toc-sub" select="cat|prod|set" />
+    </ul>
+</xsl:template>
+
+<xsl:template mode="gen-toc-sub" match="cat|prod|set">
+    <li>
+        <a>
+            <xsl:attribute name="href">
+                <xsl:value-of select="concat('#', @id)" />
+            </xsl:attribute>
+            <xsl:value-of select="title" />
+        </a>
+        <xsl:if test="local-name(.) != 'set'">
+            <xsl:if test="cat|prod|set">
+                <br />
+                <ul>
+                    <xsl:apply-templates mode="gen-toc-sub" select="cat|prod|set" />
+                </ul>
+            </xsl:if>
+        </xsl:if>
+    </li>
+</xsl:template>
+
 </xsl:stylesheet>

@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 11;
+use Test::More tests => 12;
 
 use XML::Grammar::ProductsSyndication;
 use File::Spec;
@@ -20,6 +20,7 @@ my @xml_files = (
 "008-xhtml-3.xml", # TEST
 "009-set.xml", # TEST
 "010-disabled-isbn.xml", # TEST
+"011-appendtoc.xml", # TEST
 );
 
 foreach my $xml_file (@xml_files)
