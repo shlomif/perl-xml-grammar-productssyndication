@@ -148,11 +148,22 @@
             <xsl:value-of select="title" />
         </xsl:otherwise>
         </xsl:choose>
-            <xsl:if test="creator">
-                <br />
-                <xsl:value-of select="creator" />
-            </xsl:if>
+        <xsl:if test="creator">
+            <br />
+            <xsl:value-of select="creator" />
+        </xsl:if>
+        <xsl:apply-templates select="rellink" />
         </p>
+</xsl:template>
+
+<xsl:template match="rellink">
+    <br />
+    <a>
+        <xsl:attribute name="href">
+            <xsl:value-of select="@href" />
+        </xsl:attribute>
+        <xsl:value-of select="@text" />
+    </a>
 </xsl:template>
 
 <xsl:template mode="gen-toc" match="cat">

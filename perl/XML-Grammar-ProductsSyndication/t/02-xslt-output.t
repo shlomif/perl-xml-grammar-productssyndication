@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::XML tests => 12;
+use Test::XML tests => 13;
 
 use File::Spec;
 use XML::Grammar::ProductsSyndication;
@@ -24,6 +24,7 @@ sub get_files_list
     "009-set", # TEST
     "010-disabled-isbn", # TEST
     "011-appendtoc", # TEST
+    "012-with-rellinks", # TEST
     );
 }
 
