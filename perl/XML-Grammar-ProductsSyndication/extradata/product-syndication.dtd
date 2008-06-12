@@ -68,17 +68,19 @@ driver -->
 <!ELEMENT meta (#PCDATA)>
 <!ELEMENT data (cat)>
 <!ELEMENT cat (title,desc?,(cat|prod|set)*)>
-<!ELEMENT prod (title,isbn,creator*,ref*,desc?)>
+<!ELEMENT prod (title,isbn,creator*,rellink*,ref*,desc?)>
 <!ELEMENT set (title,prod*,desc?)>
 <!ELEMENT desc ((%Flow.mix;)*)>
 <!ELEMENT isbn (#PCDATA)>
 <!ELEMENT title (#PCDATA)>
+<!ELEMENT rellink EMPTY>
 <!ELEMENT creator (#PCDATA)>
 <!ELEMENT ref EMPTY>
 <!ATTLIST cat id ID #REQUIRED>
 <!ATTLIST prod id ID #REQUIRED>
 <!ATTLIST creator type (author|artist|performer|composer|director) "author">
 <!ATTLIST ref href CDATA "" affil CDATA "">
+<!ATTLIST rellink href CDATA "" text CDATA "">
 <!ATTLIST set id ID #REQUIRED>
 <!ATTLIST isbn disable (0|1) "0">
 <!ATTLIST desc appendtoc CDATA "">
