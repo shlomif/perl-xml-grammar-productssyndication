@@ -77,7 +77,7 @@ driver -->
 <!ELEMENT ref EMPTY>
 <!ATTLIST cat id ID #REQUIRED>
 <!ATTLIST prod id ID #REQUIRED>
-<!ATTLIST creator type (author|artist|performer|composer) "author">
+<!ATTLIST creator type (author|artist|performer|composer|director) "author">
 <!ATTLIST ref href CDATA "" affil CDATA "">
 <!ATTLIST set id ID #REQUIRED>
 <!ATTLIST isbn disable (0|1) "0">
