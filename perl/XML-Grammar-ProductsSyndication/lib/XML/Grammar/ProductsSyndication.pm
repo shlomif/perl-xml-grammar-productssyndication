@@ -11,14 +11,16 @@ use XML::Amazon;
 use LWP::UserAgent;
 use Imager;
 
-use Moose;
+use base 'Class::Accessor';
 
-has '_filename' => (isa => 'Str', is => 'rw');
-has '_data_dir' => (isa => 'Str', is => 'rw');
-has '_xml_parser' => (isa => "XML::LibXML", is => 'rw');
-has '_stylesheet' => (isa => "XML::LibXSLT::StylesheetWrapper", is => 'rw');
-has '_source_dom' => (isa => "XML::LibXML::Document", is => 'rw');
-has '_img_fn' => (isa => 'Str', is => 'rw');
+__PACKAGE__->mk_accessors(qw(
+    _data_dir
+    _filename
+    _img_fn
+    _source_dom
+    _stylesheet
+    _xml_parser
+));
 
 =head1 NAME
 
@@ -391,16 +393,6 @@ sub update_cover_images
         }
     }
 }
-
-=begin unused
-
-=head2 $processor->meta();
-
-This is to settle the Pod::Coverage. meta() is probably inserted by Moose.
-
-=end unused
-
-=cut
 
 =head1 AUTHOR
 
