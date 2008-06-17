@@ -1,7 +1,14 @@
 Revision history for XML::Grammar::ProductsSyndication
 
+0.03    Tue Jun 17 11:32:22 IDT 2008
         - Added the "disable" attribute to the "isbn" tag, and added
         support for it everywhere.
+        - Converted from Moose to Class::Accessor, because Moose does not
+        install cleanly on cygwin and is an overkill for our needs.
+        - Added support for the <rellink /> tag that creates a relevant
+        link (such as wikipedia page, IMDB link, etc.)
+        - Added the support for the "appendtoc" tag to append a
+        table-of-contents.
 
 0.02    Sat Sep  9 17:19:01 IDT 2006
         - Added the ability to download Amazon.com images.
