@@ -31,9 +31,15 @@ foreach my $xml_file (@xml_files)
             'source' =>
             {
                 'file' => 
-                    File::Spec->catfile("t", "data", "valid-xmls", $xml_file),
+                    File::Spec->catfile(
+                        File::Spec->curdir(),
+                        "t", "data", "valid-xmls",
+                        $xml_file
+                    ),
             },
-            'data_dir' => File::Spec->catdir("blib", "extradata"),
+            'data_dir' => File::Spec->catdir(
+                File::Spec->curdir(), "extradata"
+            ),
         }
     );
     ok ($p->is_valid(), "Checking for validation of '$xml_file'");

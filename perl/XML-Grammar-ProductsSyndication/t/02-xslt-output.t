@@ -38,10 +38,13 @@ foreach my $xml_file (@xml_files)
             {
                 'file' => 
                     File::Spec->catfile(
+                        File::Spec->curdir(),
                         "t", "data", "valid-xmls", "$xml_file.xml"
                     ),
             },
-            'data_dir' => File::Spec->catdir("blib", "extradata"),
+            'data_dir' => File::Spec->catdir(
+                File::Spec->curdir(), "extradata"
+            ),
         }
     );
     my $got_xml = $p->transform_into_html({ 'output' => "string" });
@@ -54,6 +57,7 @@ sub load_xml
     my $xml_file = shift;
     my $path = 
         File::Spec->catfile(
+            File::Spec->curdir(),
             "t", "data", "output-htmls", "$xml_file.html"
         );
    

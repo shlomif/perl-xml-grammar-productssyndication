@@ -8,7 +8,7 @@ use XML::Grammar::Builder;
 
 my $builder = Test::Run::Builder->new(
     module_name         => 'XML::Grammar::ProductsSyndication',
-    license             => 'bsd',
+    license             => 'mit',
     dist_author         => 'Shlomi Fish <shlomif@cpan.org>',
     dist_version_from   => 'lib/XML/Grammar/ProductsSyndication.pm',
     build_requires => {

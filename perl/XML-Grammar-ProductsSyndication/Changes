@@ -1,6 +1,6 @@
 Revision history for XML::Grammar::ProductsSyndication
 
-0.0301  Tue Mar  3 19:14:16 IST 2009
+0.0301  Tue Mar  3 19:22:09 IST 2009
         - Adapted the Build.PL to properly install files in case we
         don't install under /usr . We are currently using the
         install_destination("lib") to determine a suitable place.
@@ -8,6 +8,8 @@ Revision history for XML::Grammar::ProductsSyndication
         - Extracted the extradata installation logic into a separate class
         under inc/XML/Grammar/Builder.pm for easy encapsulation and
         sharing among the different XML::Grammar::* projects.
+        - Fixed the tests' failures due to the fact that blib/extradata
+        is no longer generated.
 
 0.03    Tue Jun 17 11:32:22 IDT 2008
         - Added the "disable" attribute to the "isbn" tag, and added
