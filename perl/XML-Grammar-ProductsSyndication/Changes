@@ -1,5 +1,9 @@
 Revision history for XML::Grammar::ProductsSyndication
 
+        - Corrected the Module::Build-derived class in Build.PL from
+        Test::Run::Builder to XML::Grammar::Builder. This was an oversight
+        that resulted in the class not being installed.
+
 0.0301  Tue Mar  3 19:22:09 IST 2009
         - Adapted the Build.PL to properly install files in case we
         don't install under /usr . We are currently using the

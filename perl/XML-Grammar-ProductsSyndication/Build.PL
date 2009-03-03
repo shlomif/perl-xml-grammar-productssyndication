@@ -6,7 +6,7 @@ use lib File::Spec->catdir(File::Spec->curdir(), "inc");
 
 use XML::Grammar::Builder;
 
-my $builder = Test::Run::Builder->new(
+my $builder = XML::Grammar::Builder->new(
     module_name         => 'XML::Grammar::ProductsSyndication',
     license             => 'mit',
     dist_author         => 'Shlomi Fish <shlomif@cpan.org>',
