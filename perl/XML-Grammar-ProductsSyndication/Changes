@@ -1,5 +1,10 @@
 Revision history for XML::Grammar::ProductsSyndication
 
+        - Adapted the Build.PL to properly install files in case we
+        don't install under /usr . We are currently using the
+        install_destination("lib") to determine a suitable place.
+            - To do: extract that logic into a separate class.
+
 0.03    Tue Jun 17 11:32:22 IDT 2008
         - Added the "disable" attribute to the "isbn" tag, and added
         support for it everywhere.

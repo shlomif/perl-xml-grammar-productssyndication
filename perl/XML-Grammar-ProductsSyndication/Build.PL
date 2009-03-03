@@ -8,12 +8,10 @@ use Test::Run::Builder;
 
 use File::Find;
 
-sub data_inc
-{
-    return "/usr/share/perl5/data/modules/XML-Grammar-Products-Syndication/data";
-}
-
 my @extradata_files;
+
+my @module_ns = (qw(XML Grammar ProductsSyndication));
+my $module_name = join("-", @module_ns);
 
 sub filter_files
 {
@@ -25,6 +23,13 @@ sub filter_files
 }
 
 find({ wanted => \&filter_files, no_chdir => 1}, "extradata");
+
+sub get_dest_extradata_file
+{
+    my $fn = shift;
+    $fn =~ s{^extradata}{data};
+    return "lib/$module_name/$fn";
+}
 
 my $builder = Test::Run::Builder->new(
     module_name         => 'XML::Grammar::ProductsSyndication',
@@ -43,19 +48,25 @@ my $builder = Test::Run::Builder->new(
     },
     add_to_cleanup      => [ 'XML::Grammar::ProductsSyndication-*' ],
     create_makefile_pl => 'passthrough',
-    install_path =>
-    {
-        extradata => data_inc(),
-    },
     extradata_files => 
     {
-        map { $_ => $_ } @extradata_files,
+        (map { $_ => get_dest_extradata_file($_) } @extradata_files)
     },
 );
 
 $builder->add_build_element('extradata');
-$builder->install_path->{'extradata'} = $builder->prefix() . "/data/modules/XML-Grammar-Products-Syndication/data";
 
-$builder->config_data('extradata_install_path' => [$builder->install_path->{'extradata'}]);
+$builder->install_path()->{'extradata'} = 
+        File::Spec->catdir(
+                $builder->install_destination("lib"),
+                qw(data modules),
+                $module_name,
+                qw(data)
+        );
+
+$builder->config_data(
+    'extradata_install_path' =>
+    [$builder->install_path()->{'extradata'}]
+);
 
 $builder->create_build_script();
