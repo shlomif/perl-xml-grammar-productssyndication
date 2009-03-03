@@ -4,6 +4,9 @@ Revision history for XML::Grammar::ProductsSyndication
         don't install under /usr . We are currently using the
         install_destination("lib") to determine a suitable place.
             - To do: extract that logic into a separate class.
+        - Extracted the extradata installation logic into a separate class
+        under inc/XML/Grammar/Builder.pm for easy encapsulation and
+        sharing among the different XML::Grammar::* projects.
 
 0.03    Tue Jun 17 11:32:22 IDT 2008
         - Added the "disable" attribute to the "isbn" tag, and added
