@@ -1,9 +1,13 @@
 Revision history for XML::Grammar::ProductsSyndication
 
+0.0303
+        - Updated XML::Grammar::Builder to 0.0101 (from XML-Grammar-Screenplay)
+        so it will install all the files properly upon ./Build install.
+
 0.0302  Tue Mar  3 19:48:36 IST 2009
         - Corrected the Module::Build-derived class in Build.PL from
         Test::Run::Builder to XML::Grammar::Builder. This was an oversight
-        that resulted in the class not being installed.
+        that resulted in the module files not being installed.
 
 0.0301  Tue Mar  3 19:22:09 IST 2009
         - Adapted the Build.PL to properly install files in case we
