@@ -1,5 +1,8 @@
 Revision history for XML::Grammar::ProductsSyndication
 
+0.0400
+        - Add support for amazon_sak (Secret Access Key).
+
 0.0303
         - Updated XML::Grammar::Builder to 0.0101 (from XML-Grammar-Screenplay)
         so it will install all the files properly upon ./Build install.

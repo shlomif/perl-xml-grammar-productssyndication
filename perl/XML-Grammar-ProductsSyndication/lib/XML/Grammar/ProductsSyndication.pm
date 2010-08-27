@@ -245,6 +245,10 @@ An Amazon.com web services token. See L<XML::Amazon>.
 
 An optional Amazon.com associate ID. See L<XML::Amazon>.
 
+=item * amazon_sak
+
+An optional Amazon.com Secret Access Key (sak). See L<XML::Amazon>.
+
 =item * overwrite
 
 If true, instructs to overwrite the files in case they exist.
@@ -314,9 +318,14 @@ sub update_cover_images
     my $amazon_token = $args->{amazon_token};
     my @amazon_associate = 
         (
-            exists($args->{amazon_associate}) ? 
+            (exists($args->{amazon_associate}) ? 
                 (associate => $args->{amazon_associate},) :
                 ()
+            ),
+            (exists($args->{amazon_sak}) ?
+                (sak => $args->{amazon_sak},) :
+                (),
+            ),
         );
 
     my $dom = $self->_get_source_dom();
