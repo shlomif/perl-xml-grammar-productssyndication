@@ -59,6 +59,7 @@ t/01-validate.t
 t/02-xslt-output.t
 t/03-dload-imgs.t
 t/04-dont-dload-disable-imsg.t
+tag-release.pl
 t/boilerplate.t
 t/data/images/014036711X-l.jpg
 t/data/images/0451529308-l.jpg
