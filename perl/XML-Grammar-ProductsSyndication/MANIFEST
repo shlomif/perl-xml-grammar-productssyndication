@@ -95,3 +95,4 @@ t/lib/XML/Grammar/ProductsSyndication/Mock.pm
 t/output/images/PLACEHOLDER
 t/pod-coverage.t
 t/pod.t
+META.json

@@ -1,6 +1,6 @@
 Revision history for XML::Grammar::ProductsSyndication
 
-0.0401
+0.0401  Sun Jan  1 11:18:44 IST 2012
         - Convert t/03-dload-imgs.t to use File::Temp's tempdir() instead
         of a directory under t to solve some test failures.
 
