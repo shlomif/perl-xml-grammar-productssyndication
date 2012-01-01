@@ -1,5 +1,9 @@
 Revision history for XML::Grammar::ProductsSyndication
 
+0.0401
+        - Convert t/03-dload-imgs.t to use File::Temp's tempdir() instead
+        of a directory under t to solve some test failures.
+
 0.0400  Fri Aug 27 22:39:17 IDT 2010
         - Add support for amazon_sak (Secret Access Key).
 

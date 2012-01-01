@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 use File::Spec;
+use File::Temp qw(tempdir);
 
 use lib File::Spec->catdir(File::Spec->curdir(), "t", "lib");
 
@@ -26,7 +27,12 @@ my $ps = XML::Grammar::ProductsSyndication->new(
     },
 );
 
-my $images_dir = File::Spec->catdir(File::Spec->curdir(), "t", "output", "images");
+# Fails on some places due to "t" being read-only sometimes.
+#
+# my $images_dir = File::Spec->catdir(File::Spec->curdir(), "t", "output", "images");
+#
+# This should work better.
+my $images_dir = tempdir ( CLEANUP => 1);
 
 sub get_jpgs
 {

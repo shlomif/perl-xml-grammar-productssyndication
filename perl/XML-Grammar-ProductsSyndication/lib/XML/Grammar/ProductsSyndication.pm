@@ -28,11 +28,11 @@ XML::Grammar::ProductsSyndication - an XML Grammar for ProductsSyndication.
 
 =head1 VERSION
 
-Version 0.0400
+Version 0.0401
 
 =cut
 
-our $VERSION = '0.0400';
+our $VERSION = '0.0401';
 
 =head1 SYNOPSIS
 
