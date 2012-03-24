@@ -3,6 +3,8 @@ package XML::Grammar::ProductsSyndication;
 use warnings;
 use strict;
 
+use File::Spec;
+
 use XML::Grammar::ProductsSyndication::ConfigData;
 
 use XML::LibXML;
@@ -28,11 +30,11 @@ XML::Grammar::ProductsSyndication - an XML Grammar for ProductsSyndication.
 
 =head1 VERSION
 
-Version 0.0401
+Version 0.0402
 
 =cut
 
-our $VERSION = '0.0401';
+our $VERSION = '0.0402';
 
 =head1 SYNOPSIS
 
