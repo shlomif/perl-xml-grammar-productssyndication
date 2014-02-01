@@ -42,7 +42,7 @@ our $VERSION = '0.0402';
 
     use XML::Grammar::ProductsSyndication;
 
-    my $synd = 
+    my $synd =
         XML::Grammar::ProductsSyndication->new(
             {
                 'source' =>
@@ -99,7 +99,7 @@ sub _init
 
     my $source = $args->{'source'} or
         die "did not specify the source";
-    
+
     my $file = $source->{file};
 
     $self->_filename($file);
@@ -144,11 +144,11 @@ sub is_valid
 {
     my $self = shift;
 
-    my $dtd = 
+    my $dtd =
         XML::LibXML::Dtd->new(
             "Products Syndication Markup Language 0.1.1",
             File::Spec->catfile(
-                $self->_data_dir(), 
+                $self->_data_dir(),
                 "product-syndication.dtd"
             ),
         );
@@ -166,7 +166,7 @@ sub _get_stylesheet
 
         my $style_doc = $self->_get_xml_parser()->parse_file(
                 File::Spec->catfile(
-                    $self->_data_dir(), 
+                    $self->_data_dir(),
                     "product-syndication.xslt"
                 ),
             );
@@ -178,7 +178,7 @@ sub _get_stylesheet
 
 =head2 $processor->transform_into_html({ 'output' => $output, })
 
-Transforms the output into HTML, and returns the results. If C<'output'> is 
+Transforms the output into HTML, and returns the results. If C<'output'> is
 C<'xml'> returns the L<XML::LibXML> XML DOM. If C<'output'> is C<'string'>
 returns the XML as a monolithic string. Other C<'output'> formats are
 undefined.
@@ -320,9 +320,9 @@ sub update_cover_images
     my $overwrite = $args->{overwrite};
 
     my $amazon_token = $args->{amazon_token};
-    my @amazon_associate = 
+    my @amazon_associate =
         (
-            (exists($args->{amazon_associate}) ? 
+            (exists($args->{amazon_associate}) ?
                 (associate => $args->{amazon_associate},) :
                 ()
             ),
@@ -366,7 +366,7 @@ sub update_cover_images
                 }
             )
         );
-        
+
         if ($overwrite || (! -e $self->_img_fn()))
         {
             my $item = $amazon->asin($asin);
@@ -378,7 +378,7 @@ sub update_cover_images
                     $self->_transform_image(
                         {
                             %$args,
-                            'content' => 
+                            'content' =>
                                 $self->_get_not_available_cover_image_data(),
                         }
                     )

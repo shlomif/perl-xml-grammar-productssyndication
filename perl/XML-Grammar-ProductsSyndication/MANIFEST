@@ -1,5 +1,10 @@
 Build.PL
 Changes
+MANIFEST
+META.json
+META.yml # Will be created by "make dist"
+Makefile.PL
+README
 extradata/myml-elements-1.mod
 extradata/myml-model-1.mod
 extradata/myml-qname-1.mod
@@ -15,7 +20,6 @@ extradata/xhtml-bdo-1.mod
 extradata/xhtml-blkphras-1.mod
 extradata/xhtml-blkpres-1.mod
 extradata/xhtml-blkstruct-1.mod
-extradata/xhtml.cat
 extradata/xhtml-charent-1.mod
 extradata/xhtml-csismap-1.mod
 extradata/xhtml-datatypes-1.mod
@@ -47,20 +51,17 @@ extradata/xhtml-style-1.mod
 extradata/xhtml-symbol.ent
 extradata/xhtml-table-1.mod
 extradata/xhtml-text-1.mod
+extradata/xhtml.cat
 inc/Test/Run/Builder.pm
 inc/XML/Grammar/Builder.pm
 lib/XML/Grammar/ProductsSyndication.pm
-Makefile.PL
-MANIFEST
-META.yml # Will be created by "make dist"
-README
 t/00-load.t
 t/01-validate.t
 t/02-xslt-output.t
 t/03-dload-imgs.t
 t/04-dont-dload-disable-imsg.t
-tag-release.pl
 t/boilerplate.t
+t/cpan-changes.t
 t/data/images/014036711X-l.jpg
 t/data/images/0451529308-l.jpg
 t/data/images/0596000278-l.jpg
@@ -95,4 +96,4 @@ t/lib/XML/Grammar/ProductsSyndication/Mock.pm
 t/output/images/PLACEHOLDER
 t/pod-coverage.t
 t/pod.t
-META.json
+tag-release.pl
