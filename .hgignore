@@ -6,3 +6,4 @@ perl/XML-Grammar-ProductsSyndication/MYMETA.yml
 perl/XML-Grammar-ProductsSyndication/Makefile.PL
 perl/XML-Grammar-ProductsSyndication/_build
 perl/XML-Grammar-ProductsSyndication/blib
+perl/XML-Grammar-ProductsSyndication/XML-Grammar-ProductsSyndication-*
