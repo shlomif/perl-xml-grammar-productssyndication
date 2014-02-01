@@ -1,5 +1,8 @@
 Revision history for XML::Grammar::ProductsSyndication
 
+0.0403  Sat  1 Feb 15:27:33 IST 2014
+        - Add minimal version of perl (CPANTS).
+
 0.0402  Sat Mar 24 10:16:44 IST 2012
         - Add more used modules to the 'requires'.
         - Now we have a "use File::Spec;" in the main module (because it
@@ -44,7 +47,7 @@ Revision history for XML::Grammar::ProductsSyndication
 
 0.02    Sat Sep  9 17:19:01 IDT 2006
         - Added the ability to download Amazon.com images.
-        
+
 0.01    Fri Sep  8 22:02:16 IDT 2006
-        - Created the skeleton of the module using module-starter. 
+        - Created the skeleton of the module using module-starter.
         - Implemented the basic XSLT + DTD functionality.

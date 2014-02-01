@@ -3,6 +3,8 @@ package XML::Grammar::ProductsSyndication;
 use warnings;
 use strict;
 
+use 5.008;
+
 use File::Spec;
 
 use XML::Grammar::ProductsSyndication::ConfigData;

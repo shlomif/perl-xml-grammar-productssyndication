@@ -19,6 +19,7 @@ my $builder = XML::Grammar::Builder->new(
         'XML::Amazon' => 0,
         'XML::LibXML' => 0,
         'XML::LibXSLT' => 0,
+        'perl' => '5.008',
         'strict' => 0,
         'warnings' => 0,
     },
