@@ -27,12 +27,12 @@
     <xsl:element name="h{count(ancestor-or-self::cat)+1}">
         <xsl:value-of select="title" />
     </xsl:element>
-    <xsl:apply-templates mode="copy-no-ns" 
+    <xsl:apply-templates mode="copy-no-ns"
         select="desc/*" />
     <xsl:if test="desc/@appendtoc">
         <xsl:apply-templates mode="gen-toc" select="." />
     </xsl:if>
-    
+
     <xsl:apply-templates select="prod|cat|set" />
     </div>
 </xsl:template>
@@ -96,7 +96,7 @@
         </div>
         <div class="desc">
             <xsl:apply-templates mode="copy-no-ns"
-                select="desc/*" />            
+                select="desc/*" />
         </div>
     </div>
 </xsl:template>
