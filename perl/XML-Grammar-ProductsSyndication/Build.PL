@@ -11,6 +11,9 @@ my $builder = XML::Grammar::Builder->new(
     license             => 'mit',
     dist_author         => 'Shlomi Fish <shlomif@cpan.org>',
     dist_version_from   => 'lib/XML/Grammar/ProductsSyndication.pm',
+    configure_requires => {
+        'Module::Build' => '0.36',
+    },
     requires => {
         'Class::Accessor' => 0,
         'File::Spec' => 0,
