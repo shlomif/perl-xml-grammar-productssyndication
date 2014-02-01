@@ -2,6 +2,7 @@ Revision history for XML::Grammar::ProductsSyndication
 
 0.0403  2014-02-01
         - Add minimal version of perl (CPANTS).
+        - Add LICENSE file (CPANTS).
 
 0.0402  2012-03-24
         - Add more used modules to the 'requires'.
