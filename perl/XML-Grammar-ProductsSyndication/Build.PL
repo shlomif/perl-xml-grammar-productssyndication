@@ -32,6 +32,13 @@ my $builder = XML::Grammar::Builder->new(
     },
     add_to_cleanup      => [ 'XML::Grammar::ProductsSyndication-*' ],
     create_makefile_pl => 'passthrough',
+    meta_merge =>
+    {
+        resources =>
+        {
+            repository => 'http://bitbucket.org/shlomif/perl-xml-grammar-productssyndication',
+        },
+    },
 );
 
 $builder->create_build_script();
