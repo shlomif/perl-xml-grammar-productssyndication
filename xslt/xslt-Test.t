@@ -11,7 +11,7 @@ use XML::LibXSLT;
 
 sub get_files_list
 {
-    my @files = 
+    my @files =
     (
     "valid-xmls/001-empty-cat.xml", # TEST
     "valid-xmls/002-nested-cat.xml", # TEST

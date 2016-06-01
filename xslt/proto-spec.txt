@@ -7,7 +7,7 @@ Examples:
 
     - http://www.joelonsoftware.com/navLinks/fog0000000262.html
 
-* Each item record will have the id attribute that will uniquely identify it. 
+* Each item record will have the id attribute that will uniquely identify it.
 
 * Sub-element of the item: <isbn></isbn>
 
@@ -28,7 +28,7 @@ Categorisation:
 ---------------
 
     * A simple tree with the items as leaves
-        - 
+        -
         <cat id="books">
             <title>Books</title>
             <desc>
